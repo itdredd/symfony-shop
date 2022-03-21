@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>{% block title %}Welcome!{% endblock %}</title>
+
+    <link rel="icon" type="image/x-icon" href="{{ asset('images/logo.jpg') }}">
+    <script src="https://kit.fontawesome.com/09b1f48f7c.js" crossorigin="anonymous"></script>
+    {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
+    {% block stylesheets %}
+        {{ encore_entry_link_tags('app') }}
+    {% endblock %}
+
+    {% block javascripts %}
+        {{ encore_entry_script_tags('app') }}
+    {% endblock %}
+</head>
+<body id="{% block body_id %}{% endblock %}">
+<div class="outer">
+    <div class="inner">
+        {% block header %}
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="/">
+                        <img src="{{ asset('images/logo.jpg') }}" alt="">
+                    </a>
+                    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                        <div class="navbar-nav">
+                            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                                <a class="nav-link" aria-current="page" href="">{{ app.user.uuid }}</a>
+                                <a class="nav-link" href="{{ path('key_list') }}">Keys</a>
+                            {% endif %}
+                            <a class="nav-link" href="{{ path('product_list') }}">Products</a>
+                            <a class="nav-link" href="{{ path('category_list') }}">Category</a>
+                            <a class="nav-link" href="{{ path('faq') }}">FAQ</a>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+            {#<header class="page-header">
+                <div class="left-side--page-header">
+                    <div class="page-header--logo">
+                        <a href="/"><img src="{{ asset('images/logo.jpg') }}" alt="GlobalHacks"/></a>
+                    </div>
+                </div>
+                <div class="right-side--page-header">
+                    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                        <span class="nav-item">{{ app.user.uuid }}</span>
+                        <span class="nav-item"><a href="{{ path('product_create') }}">Product</a></span>
+                        <span class="nav-item"><a href="{{ path('category_create') }}">Create category</a></span>
+                        <span class="nav-item"><a href="{{ path('product_list') }}">Products</a></span>
+
+                    {% else %}
+                        <span class="nav-item"><a href="{{ path('product_list') }}">Products</a></span>
+                        <span class="nav-item"><a href="{{ path('category_list') }}">Category</a></span>
+                        <a href="about">About</a> <!-- TODO EDIT LINKS -->
+                    {% endif %}
+                </div>
+
+            </header>#}
+        {% endblock %}
+
+        {% block body %}{% endblock %}
+    </div>
+    {% block footer %}
+        <!-- Footer -->
+        <footer class="text-center text-lg-start bg-light text-muted">
+            <!-- Section: Social media -->
+            <section
+                class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom"
+            >
+                <!-- Left -->
+                <div class="me-5 d-none d-lg-block">
+                    <span>Get connected with us on social networks:</span>
+                </div>
+                <!-- Left -->
+
+                <!-- Right -->
+                <div>
+                    <a href="" class="me-4 text-reset">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="" class="me-4 text-reset">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="" class="me-4 text-reset">
+                        <i class="fab fa-google"></i>
+                    </a>
+                    <a href="" class="me-4 text-reset">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="" class="me-4 text-reset">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="" class="me-4 text-reset">
+                        <i class="fab fa-github"></i>
+                    </a>
+                </div>
+                <!-- Right -->
+            </section>
+            <!-- Section: Social media -->
+
+            <!-- Section: Links  -->
+            <section class="">
+                <div class="container text-center text-md-start mt-5">
+                    <!-- Grid row -->
+                    <div class="row mt-3">
+                        <!-- Grid column -->
+                        <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                            <!-- Content -->
+                            <h6 class="text-uppercase fw-bold mb-4">
+                                <i class="fas fa-gem me-3"></i>GlobalHacks.xyz
+                            </h6>
+                            <p>
+                                Here you can use rows and columns to organize your footer content. Lorem ipsum
+                                dolor sit amet, consectetur adipisicing elit.
+                            </p>
+                        </div>
+                        <!-- Grid column -->
+
+                        <!-- Grid column -->
+                        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+                            <!-- Links -->
+                            <h6 class="text-uppercase fw-bold mb-4">
+                                Products
+                            </h6>
+                            <p>
+                                <a href="{{ path('category_view', {'id': 1}) }}" class="text-reset">PUBG</a>
+                            </p>
+                            <p>
+                                <a href="{{ path('category_view', {'id': 3}) }}" class="text-reset">Warzone</a>
+                            </p>
+                            <p>
+                                <a href="{{ path('category_view', {'id': 4}) }}" class="text-reset">EFT</a>
+                            </p>
+                            <p>
+                                <a href="{{ path('category_view', {'id': 4}) }}" class="text-reset">RUST</a>
+                            </p>
+                        </div>
+                        <!-- Grid column -->
+
+                        <!-- Grid column -->
+                        <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+                            <!-- Links -->
+                            <h6 class="text-uppercase fw-bold mb-4">
+                                Useful links
+                            </h6>
+                            <p>
+                                <a href="#!" class="text-reset">Pricing</a>
+                            </p>
+                            <p>
+                                <a href="#!" class="text-reset">Settings</a>
+                            </p>
+                            <p>
+                                <a href="#!" class="text-reset">Orders</a>
+                            </p>
+                            <p>
+                                <a href="#!" class="text-reset">Help</a>
+                            </p>
+                        </div>
+                        <!-- Grid column -->
+
+                        <!-- Grid column -->
+                        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                            <!-- Links -->
+                            <h6 class="text-uppercase fw-bold mb-4">
+                                Contact
+                            </h6>
+                            <p><i class="fas fa-home me-3"></i> New York, NY 10012, US</p>
+                            <p>
+                                <i class="fas fa-envelope me-3"></i>
+                                info@example.com
+                            </p>
+                            <p><i class="fas fa-phone me-3"></i><a href="t.me/dredd">DREDD</a></p>
+                            <p><i class="fas fa-print me-3"></i><a href="t.me/dredd">VK GROUP</a></p>
+                        </div>
+                        <!-- Grid column -->
+                    </div>
+                    <!-- Grid row -->
+                </div>
+            </section>
+            <!-- Section: Links  -->
+
+            <!-- Copyright -->
+            <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+                © 2022 Copyright:
+                <a class="text-reset fw-bold" href="https://globalhacks.xyz">GlobalHacks.xyz</a>
+            </div>
+            <!-- Copyright -->
+        </footer>
+        <!-- Footer -->
+    {% endblock %}
+</div>
+
+</body>
+</html>

@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block body_id 'product_list' %}
+
+{% block body %}
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Price</th>
+            <th scope="col">Durations type</th>
+            <th scope="col">Category</th>
+            <th scope="col">Delete</th>
+            <th scope="col">Edit</th>
+        </tr>
+        </thead>
+
+    <tbody>
+    {% for product in products %}
+        <tr>
+            <th scope="row">{{ loop.index }}</th>
+            <td>{{ product.name }}</td>
+            <td>{{ product.price }} {{ product.currency }}</td>
+            <td>{{ product.getDurationTime() }}</td>
+            <td>{{ product.category }}</td>
+            <td><a href="{{ path('product_delete', {id: product.id}) }}">Delete</a></td>
+            <td><a href="{{ path('product_edit', {id: product.id}) }}">Edit</a></td>
+        </tr>
+    {% endfor %}
+    </tbody>
+    </table>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block body_id 'index' %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            {% for category in categories %}
+                <div class="card" style="width: 18em;">
+                    <img class="card-img-top" src="{{ category.imgUrl }}" alt="{{ category.name }}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ category.name }}</h5>
+                        <a href="{{ path('category_view', {'id': category.id}) }}" class="btn btn-primary">Products</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    <h2 class="page-title">Home page</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad aperiam asperiores consectetur dolore doloribus
+        eligendi est iusto magnam, magni molestiae nihil odio quam reprehenderit sed sunt ut vel voluptatem
+        voluptates.</p>
+{% endblock %}

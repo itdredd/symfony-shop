@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block body_id 'category' %}
+
+{% block body %}
+    <h2 class="page-title">Categories</h2>
+    <div class="categories">
+        <ul class="categories-list">
+            <li class="categories-item"><a href="{{ path('categories_page', {id: 'pubg'}) }}">PUBG</a></li>
+            <li class="categories-item"><a href="{{ path('categories_page', {id: 'eft'}) }}">EFT</a></li>
+            <li class="categories-item"><a href="{{ path('categories_page', {id: 'rust'}) }}">RUST</a></li>
+        </ul>
+    </div>
+{% endblock %}

@@ -1,0 +1,70 @@
+@import "~bootstrap/scss/bootstrap";
+
+*{
+    padding: 0;
+    margin: 0;
+}
+
+.inner{
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    color: #000;
+}
+
+.page-header {
+    display: flex;
+    padding: 2em 0;
+    text-transform: uppercase;
+    justify-content: space-between;
+    font-size: 1.2em;
+}
+
+.page-header--logo img{
+    max-width: 64px;
+}
+
+.page-footer {
+    background-color: #000;
+    min-height: 60px;
+    margin-top: 3em;
+}
+
+.page-title {
+    margin: 1em 0;
+}
+
+.categories {
+    display:inline;
+}
+
+.categories-list li {
+    display: inline;
+}
+
+.nav-item + .nav-item {
+    padding-left: 0.4em;
+}
+
+.navbar-brand img{
+    max-width: 64px;
+}
+
+.navbar {
+    margin-bottom: 2em;
+}
+
+a > i {
+    padding-right: 0.3em;
+}
+
+.card-img-top {
+    width: 260px;
+    height: 120px;
+}
